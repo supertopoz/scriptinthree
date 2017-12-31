@@ -5,26 +5,37 @@
   <meta name="viewport" content="width=device-width">
   <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
   <link rel="stylesheet" type="text/css" href="./src/stylesheet.css">
-  <title>JS Bin</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <title>Script {"in": 3}</title>
 </head>
 <body>
 <!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Realizing_common_layouts_using_CSS_Grid_Layout -->
 
 <div class="wrapper">
          
-        <header class="main-head">The header</header>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="">Nav 1</a></li>
-                <li><a href="">Nav 2</a></li>
-                <li><a href="">Nav 3</a></li>
-            </ul>
-        </nav>
+        <header class="main-head">
+          <span id="company-background">
+            <span id="header-script">Script</span> 
+            <span id="header-inthree">{"in":3}</span>
+          </span>
+        <picture>
+        <source media="(min-width: 750px)"
+        srcset="https://static.turbosquid.com/Preview/2014/05/16__03_52_30/SIGNATURE_Horse_Static_Brown_Clean_02.jpg82524f2a-4847-4b8d-bda7-8d42d9de1984Large.jpg" />
+        <source media="(min-width: 500px)"
+        srcset="https://www.howrse.com/media/equideo/image/chevaux/adulte/trotteur/normal/300/alz.png" />
+        <img src="/assets/mini-logo.png" alt="Mini Script in 3 logo">
+        </picture>
+
+
+        </header>
         <article class="content"><h1>Main article area</h1>
         <p>In this layout, we display the areas in source order for any screen less that 500 pixels wide. We go to a two column layout, and then to a three column layout by redefining the grid, and the placement of items on the grid.</p></article> 
         <aside class="side">
-          <div id="menu-buttons"></div>  
-          
+       
+            <i  class="material-icons menu-buttons-hamburger">&#xE5D2;</i>
+          <div id="menu-buttons-mini"></div>
+          <div id="menu-buttons"></div>            
         </aside>
         <div class="ad">Advertising</div>
         <footer id="footer" class="main-footer">Copyright Jason Allshorn</footer>

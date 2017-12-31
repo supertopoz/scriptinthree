@@ -18,6 +18,9 @@
     }
 .main-head {
   grid-area: header;
+  background: #ffea00;
+  display: flex;
+  justify-content: space-between;
 }
 .content {
   grid-area: content;
@@ -30,7 +33,6 @@
   padding: 0px;
   border-top: 3px solid;
   border-top: solid  5px yellow;  
-  border-bottom: solid  5px yellow; 
   background-color: white; 
 
 }
@@ -42,10 +44,9 @@
 }
 .wrapper {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 5px;
   grid-template-areas: 
     "header"
-    "nav"
     "sidebar"
     "content"    
     "ad"
@@ -56,7 +57,6 @@
     grid-template-columns: 1fr 3fr;
     grid-template-areas: 
       "header  header"
-      "nav     nav"
       "sidebar content"
       "ad      footer";
   }
@@ -70,8 +70,8 @@
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: 
       "header header  header"
-      "nav    content sidebar"
-      "nav    content ad"
+      "content    content sidebar"
+      "content    content ad"
       "footer footer  footer"
    }
    nav ul {
@@ -89,6 +89,13 @@
 
 @media (min-width: 500px) {
 
+#menu-buttons-mini{
+  display:none;
+}
+
+.menu-buttons-hamburger{
+    display:none !important;
+ }
 
 .menu-button{
   color: #2a2a2a;
@@ -104,3 +111,82 @@
   background-color: #2a2a2a;
 }
 }
+
+
+
+@media (max-width: 499px) {
+
+#header-script{
+  font-size: 1.5em;
+  font-weight: bold
+}
+
+#header-inthree{
+  font-size: 0.8em;
+  color:white;
+}
+
+#company-background{
+  padding: 10px;
+  background-color: #1976d2;
+  border-radius: 10px;
+}
+
+/*.main-head{
+  background-color: blue;
+}*/
+
+  .side {
+  min-height:40px;    
+  border-top:0px;  
+  border-bottom:0px; 
+  background-color: #2a2a2a; 
+}
+
+  #menu-buttons-mini{
+     color:white;
+     padding: 10px;
+     display: none;
+
+  }
+  
+  .menu-buttons-hamburger{
+    color:white;
+    padding:10px !important;
+  }
+
+  .menu-buttons-hamburger:hover{
+    color:white;
+    padding:10px;
+    cursor:pointer;
+  }
+
+  #menu-buttons{
+     display: none;
+  }
+
+  #menu-buttons-mini:hover{
+     color:white;
+     padding: 10px;
+     cursor: pointer;
+  }
+
+  .menu-button{
+  color: #2a2a2a;
+  background-color: white;
+  padding: 10px;
+  font-size: 0.7em;
+  border-bottom: 1px solid lightgrey;
+  cursor: pointer; 
+  text-align: center;
+  
+}
+
+.menu-button:hover {
+  color: white;
+  background-color: #2a2a2a;
+}
+ 
+
+}
+
