@@ -105,14 +105,18 @@
     font-size: 4em;
   }
 
-  .content {
-  height: 700px;
+  #video-list {
+  height: 400px;
   overflow: auto;
   }
 
   .card{
-   display:flex;
-   margin-top: 15px;
+    display:flex;
+    margin-top: 10px;
+    background-color: #1976d2;
+    color: white;
+    padding:10px;
+    border-radius: 5px;
   }
 
   .card > p {
@@ -148,6 +152,10 @@
   .card{
     display:flex;
     margin-top: 10px;
+    background-color: #1976d2;
+    color: white;
+    padding:10px;
+    border-radius: 5px;
   }
 
   .title-text{
@@ -201,7 +209,11 @@
 
   .card{
     display:flex;
-    margin-top: 5px;
+    margin-top: 10px;
+    background-color: #1976d2;
+    color: white;
+    padding:10px;
+    border-radius: 5px;
   }
 
   .title-text {

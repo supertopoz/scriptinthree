@@ -1,17 +1,4 @@
-let menu = [
-  'Apps-script',
-  'JQuery',
-  'Firebase',
-  'Redux',
-  'more',
-  'more',
-  'Apps-script',
-  'JQuery',
-  'Firebase',
-  'Redux',
-  'more',
-]
-  var player;
+var player;
 
 // Reducer - takes the action types and reduces them into a new state condition.
 const text = (state = {}, actions) =>{
@@ -68,13 +55,6 @@ var updateVideoList =(data, id) =>{
   var vidId = video.snippet.resourceId.videoId;
     $('#video-list').append(
     '<div id=card-"'+vidId+'" class="card">'+
-    '<picture>'+
-    '<source media="(min-width: 700px)"'+
-    'srcset="'+thumbs.medium.url+'" />'+
-    '<source media="(min-width: 500px)"'+
-    'srcset="'+thumbs.default.url+'" />'+
-    '<img id="pic-'+vidId+'" src="'+thumbs.default.url+'" alt="Mini Script in 3 logo">'+
-    '</picture>'+
     '<div class="info-box">'+
     '<span class="title-text" id="title-'+vidId+'">'+title+'</span>' +
     '</div>'+
