@@ -16,7 +16,8 @@ let menu = [
 // Reducer - takes the action types and reduces them into a new state condition.
 const text = (state = {}, actions) =>{
   switch (actions.type) {
-    case 'UPDATE_MENU': return Object.assign({}, state, {menuItems: actions.menuItems})
+    case 'UPDATE_MENU': return Object.assign({}, state, {menuItems: actions.menuItems});
+    case 'UPDATE_MAIN_HEADING': return Object.assign({}, state, {currentVideoList: {'heading': actions.heading, 'listId': actions.listId}})
     default: return state
   }  
 }
@@ -27,22 +28,40 @@ const updateUi = Redux.createStore(text);
 
 //Use subscribe() to update the UI in response to state changes.
 updateUi.subscribe(() => {
-  let data = updateUi.getState().menuItems
-  createMenu(data)
+
+  let data = updateUi.getState()
+  updateMainView(data)
+  createMenu(data.menuItems)
+ 
 });
 
+
+var updateMainView = (data) =>{
+  $('.content').empty();
+  try {
+  $('.content').append(
+    '<h1>'+ data.currentVideoList.heading +'</h1>'
+  
+  );
+  } catch(e){
+  	console.log(e)
+  }
+
+}
 
 
 
 var createMenu = (data) => {
-  
+  $('#menu-buttons').empty()
+   $('#menu-buttons-mini').empty()
   for (var i in data) {
-  	var text = data[i].title.toUpperCase();
+  	var text = data[i].title;
+  	var id = i
 	$('#menu-buttons').append(
-    '<div class="menu-button">'+text+'</div>'
+    '<div id="'+id+'" class="menu-button">'+text+'</div>'
     )
     $('#menu-buttons-mini').append(
-    '<div class="menu-button">'+text+'</div>'
+    '<div id="'+id+'" class="menu-button">'+text+'</div>'
     )
   }
 }
@@ -51,11 +70,15 @@ $('.menu-buttons-hamburger').on('click', () =>{
    $('#menu-buttons-mini').toggle("slow");
 })
 
-$(document).on('click','.menu-button',() =>{
-	console.log('mouse out working')
+$(document).on('click','.menu-button',(e) =>{
+   var heading = e.currentTarget.innerText;
+   var listId = e.currentTarget.id
    $('#menu-buttons-mini').hide('slow');
    $('#menu-buttons-hamburger').show();
+   updateUi.dispatch({type:'UPDATE_MAIN_HEADING','heading': heading, 'listId':listId});
 })
+
+
 
 $(document).ready(()=>{
 
