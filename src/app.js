@@ -69,7 +69,7 @@ var updateVideoList =(data, id) =>{
 		'srcset="'+thumbs.default.url+'" />'+
 		'<img id="pic-'+id+'" src="'+thumbs.default.url+'" alt="Mini Script in 3 logo">'+
 	'</picture>'+
-	 '<div>'+
+	 '<div class="info-box">'+
 	 '<span class="title-text" id="title-'+id+'">'+title+'</span>' +
 	 '</div>'+
     	
