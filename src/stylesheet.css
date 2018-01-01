@@ -7,7 +7,6 @@
     }
 
     .wrapper > * {
-        background-color: #ffec99;
         padding: 10px;
     }
 
@@ -100,6 +99,14 @@
 /*---- Large ------*/
 @media (min-width: 700px) {
 
+  .card{
+    display:flex;
+  }
+
+  .card > p {
+    padding-left: 10px;
+  }
+
 #header-script{
     font-size: 6em !important;
     font-weight: bold
@@ -125,6 +132,14 @@
 
 /*---- Medium ------*/
 @media (min-width: 500px) {
+
+  .card{
+    display:flex;
+  }
+
+  .card > p {
+    padding-left: 10px;
+  }
 
   #header-script{
     font-size: 3em;
@@ -169,6 +184,16 @@
 /*---- Small ------*/
 
 @media (max-width: 499px) {
+
+  .card{
+    display:flex;
+  }
+
+  .card > p {
+    font-size: 0.8em;
+    padding-left: 5px;
+  }
+
 
   #header-script{
     font-size: 1.8em;
@@ -237,4 +262,6 @@
   }
  
 }
+
+
 

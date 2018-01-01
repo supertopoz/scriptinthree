@@ -57,18 +57,23 @@ var updateVideoList =(data, id) =>{
   videoArr.forEach((video)=>{
   	var title = video.snippet.title
   	var thumbs = video.snippet.thumbnails;
-  	console.log(thumbs)
+  	console.log(id)
+  	//console.log(thumbs)
     $('#video-list').append(
+     '<div class="card">'+
+
 	'<picture>'+
 		'<source media="(min-width: 700px)"'+
 		'srcset="'+thumbs.medium.url+'" />'+
 		'<source media="(min-width: 500px)"'+
 		'srcset="'+thumbs.medium.url+'" />'+
-		'<img src="'+thumbs.default.url+'" alt="Mini Script in 3 logo">'+
+		'<img id="pic-'+id+'" src="'+thumbs.default.url+'" alt="Mini Script in 3 logo">'+
 	'</picture>'+
-    	'<p>'+title+'</p>'
+    	'<p id="title-'+id+'">'+title+'</p>' +
+     '</div>'	
 
-    )
+    ).hide()
+    $('#video-list').show(500)
   })
  
 }
