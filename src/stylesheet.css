@@ -23,6 +23,7 @@
 }
 .content {
   grid-area: content;
+  min-height: 700px;
 }
 .main-nav {
   grid-area: nav;
@@ -74,7 +75,7 @@
 @media (min-width: 700px) {
 
   .wrapper {
-    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: 
       "header header  header"
       "content    content sidebar"
@@ -99,8 +100,18 @@
 /*---- Large ------*/
 @media (min-width: 700px) {
 
+
+  .title-text{
+    font-size: 2em;
+  }
+
+  .content {
+  height: 700px;
+  overflow: auto;
+  }
+
   .card{
-    display:flex;
+/* /   display:flex;*/
   }
 
   .card > p {
@@ -139,6 +150,10 @@
 
   .card > p {
     padding-left: 10px;
+  }
+
+  .title-text{
+    font-size: 1em;
   }
 
   #header-script{
@@ -189,7 +204,7 @@
     display:flex;
   }
 
-  .card > p {
+  .title-text {
     font-size: 0.8em;
     padding-left: 5px;
   }
@@ -262,6 +277,23 @@
   }
  
 }
+
+ .title-text {
+  color: darkgrey;
+  border-bottom: 3px solid yellow;
+  margin-left: 10px;
+  width:100%;
+ }
+
+ .title-text:hover{
+   cursor: pointer;
+ }
+
+ picture:hover{
+  cursor: pointer;
+ }
+
+
 
 
 
