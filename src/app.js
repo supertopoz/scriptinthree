@@ -30,16 +30,18 @@ const updateUi = Redux.createStore(text);
 updateUi.subscribe(() => {
 
   let data = updateUi.getState()
-  updateMainView(data)
-  createMenu(data.menuItems)
- 
+  
+
+  updateMainView(data);
+  createMenu(data.menuItems);
+  updateVideoList(data.menuItems, data.currentVideoList.listId);
 });
 
 
 var updateMainView = (data) =>{
-  $('.content').empty();
+  $('.main-title').empty();
   try {
-  $('.content').append(
+  $('.main-title').append(
     '<h1>'+ data.currentVideoList.heading +'</h1>'
   
   );
@@ -49,6 +51,27 @@ var updateMainView = (data) =>{
 
 }
 
+var updateVideoList =(data, id) =>{
+  $('#video-list').empty();
+  var videoArr = data[id].videos.items;
+  videoArr.forEach((video)=>{
+  	var title = video.snippet.title
+  	var thumbs = video.snippet.thumbnails;
+  	console.log(thumbs)
+    $('#video-list').append(
+	'<picture>'+
+		'<source media="(min-width: 700px)"'+
+		'srcset="'+thumbs.medium.url+'" />'+
+		'<source media="(min-width: 500px)"'+
+		'srcset="'+thumbs.medium.url+'" />'+
+		'<img src="'+thumbs.default.url+'" alt="Mini Script in 3 logo">'+
+	'</picture>'+
+    	'<p>'+title+'</p>'
+
+    )
+  })
+ 
+}
 
 
 var createMenu = (data) => {
