@@ -12,6 +12,7 @@ const text = (state = {}, actions) =>{
     case 'UPDATE_MENU': return Object.assign({}, state, {menuItems: actions.menuItems});
     case 'UPDATE_MAIN_HEADING': return Object.assign({}, state, {currentVideoList: {'heading': actions.heading, 'listId': actions.listId}})
     case 'UPDATE_MAIN_PLAYER': return Object.assign({}, state, currentVideoList)
+
     default: return state
   }  
 }
@@ -24,22 +25,21 @@ const updateUi = Redux.createStore(text);
 updateUi.subscribe(() => {
 
   let data = updateUi.getState()
-  
-
   updateMainView(data);
   createMenu(data.menuItems);
+  if(data.currentVideoList){
   updateVideoList(data.menuItems, data.currentVideoList.listId);
   updateMainPlayer(data.currentVideoList.mainPlayerId );
+  }
 });
 
 
 var updateMainView = (data) =>{
   $('.main-title').empty();
   try {
-  $('.main-title').append(
-    '<h1>'+ data.currentVideoList.heading +'</h1>'
-  
-  );
+  if(data.currentVideoList){
+    $('.main-title').text(" > " + data.currentVideoList.heading);
+  }
   } catch(e){
   	console.log(e)
   }
@@ -48,6 +48,7 @@ var updateMainView = (data) =>{
 
 var updateVideoList =(data, id) =>{
   $('#video-list').empty();
+
   var videoArr = data[id].videos.items;
   videoArr.forEach((video)=>{
   var title = video.snippet.title
@@ -65,9 +66,8 @@ var updateVideoList =(data, id) =>{
 }
 
 var updateMainPlayer = (id) => {
-  console.log(id.replace(/"/g,''))
-  id = id.replace(/"/g,'');
-  console.log(id)
+  if(id) id = id.replace(/"/g,'');
+  else id = '1f9PbGipAEg'
   var data = {'videoId': id,
                'startSeconds': 0.1,
                'suggestedQuality': 'large'};
@@ -103,6 +103,7 @@ $('.menu-buttons-hamburger').on('click', () =>{
 })
 
 $(document).on('click','.menu-button',(e) =>{
+  $('#player').show();
   var heading = e.currentTarget.innerText;
   var listId = e.currentTarget.id
   $('#menu-buttons-mini').hide('slow');
@@ -134,6 +135,8 @@ $(document).ready(()=>{
   });
   })
 
+
+
   var tag = document.createElement('script');
 
   tag.src = "https://www.youtube.com/iframe_api";
@@ -144,12 +147,7 @@ $(document).ready(()=>{
     player = new YT.Player('player', {
       videoId: '1f9PbGipAEg',
     });
+    $('#player').hide();
   }
 
-
-
-
-
-
-   
 
