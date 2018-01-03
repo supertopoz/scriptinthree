@@ -66,6 +66,8 @@
     "footer";
 }
 
+
+
 @media (min-width: 500px) {
   .wrapper {
     grid-template-columns: 1fr 3fr;
@@ -109,6 +111,10 @@
 /*---- Large ------*/
 @media (min-width: 700px) {
 
+  #player{
+    display: flex;
+    width:100%;
+  }
 
   .title-text{
     font-size: 4em;
@@ -157,7 +163,10 @@
 
 /*---- Medium ------*/
 @media (min-width: 500px) {
-
+  #player{
+    display: flex;
+    width:100%;
+  }
   .card{
     display:flex;
     margin-top: 10px;
@@ -215,6 +224,10 @@
 
 @media (max-width: 499px) {
 
+  #player{
+    display: flex;
+    width:100%;
+  }
 
   .card{
     display:flex;

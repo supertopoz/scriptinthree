@@ -144,9 +144,8 @@ $(document).ready(()=>{
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      videoId: '1f9PbGipAEg',
-    });
+    player = new YT.Player('player', { videoId: '1f9PbGipAEg' });
+    console.log(player.a)
     $('#player').hide();
   }
 
