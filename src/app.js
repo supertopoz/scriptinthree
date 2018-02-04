@@ -25,13 +25,23 @@ const updateUi = Redux.createStore(text);
 updateUi.subscribe(() => {
 
   let data = updateUi.getState()
-  updateMainView(data);
-  createMenu(data.menuItems);
-  if(data.currentVideoList){
-  updateVideoList(data.menuItems, data.currentVideoList.listId);
-  updateMainPlayer(data.currentVideoList.mainPlayerId );
+ // console.log(data)
+  let list = data.currentVideoList
+  if(list === undefined || list.heading === 'Welcome'){
+    createHomePage(data.menuItems);
+    updateMainView(data);
+    createMenu(data.menuItems);
+
+    return;
+  } 
+    updateMainView(data);
+    createMenu(data.menuItems);
+
+    if(data.currentVideoList){
+    updateVideoList(data.menuItems, data.currentVideoList.listId);
+    updateMainPlayer(data.currentVideoList.mainPlayerId );
   }
-});
+})
 
 
 var updateMainView = (data) =>{
@@ -65,9 +75,37 @@ var updateVideoList =(data, id) =>{
   })
 }
 
+var createHomePage = (data) => {
+  console.log(data)
+  $('iframe').hide();
+  player.stopVideo();
+  $('#video-list').empty();
+  $('#video-list').append(
+    '<h1> Welcome to Script in Three</h1>' + 
+    '<p>Here you can learn all about Javascript in short tutorials of around 3 minutes or less.</p>'+
+    '<div id="menu-list"></div>'
+    )
+  for (var i in data) {
+    $('#menu-list').append(
+     `<div id="${i}" class="menu-list-item menu-button"> ${data[i].title}</div>`
+      )
+  }
+}
+
+const addPlaceHolder  =() => {
+  $('iframe').hide();
+  player.stopVideo();
+}
+
+
 var updateMainPlayer = (id) => {
-  if(id) id = id.replace(/"/g,'');
-  else id = '1f9PbGipAEg'
+  console.log(id)
+  if(id) {
+   id = id.replace(/"/g,'');
+  $('iframe').show();
+  }
+  else if(id === undefined) addPlaceHolder()
+
   var data = {'videoId': id,
                'startSeconds': 0.1,
                'suggestedQuality': 'large'};
@@ -111,6 +149,9 @@ $(document).on('click','.menu-button',(e) =>{
   updateUi.dispatch({type:'UPDATE_MAIN_HEADING','heading': heading, 'listId':listId});
 })
 
+$(document).on('click', '#home-key', () => {
+  updateUi.dispatch({type:'UPDATE_MAIN_HEADING','heading': 'Welcome'});
+})
 
 
 $(document).ready(()=>{
@@ -145,7 +186,7 @@ $(document).ready(()=>{
 
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', { videoId: '1f9PbGipAEg' });
-    console.log(player.a)
+   // console.log(player.a)
     $('#player').hide();
   }
 
