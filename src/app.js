@@ -23,7 +23,8 @@ const updateUi = Redux.createStore(text);
 
 //Use subscribe() to update the UI in response to state changes.
 updateUi.subscribe(() => {
-
+  $('.loader').hide();
+  $('#home-key').show();
   let data = updateUi.getState()
  // console.log(data)
   let list = data.currentVideoList
